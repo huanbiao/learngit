@@ -40,6 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<table border="1" cellspacing="0" align="center">
 		<tr>
+			<td colspan="5" align="right"><a href="add.jsp">添加新的货品信息</a></td>
+		</tr>
+		<tr>
 			<td>id</td>
 			<td>名称</td>
 			<td>价格</td>

@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.biao.bean.User;
 import com.biao.dao.UserDao;
@@ -29,17 +30,14 @@ public class LoginServlet extends HttpServlet
 		{
 			req.getRequestDispatcher("QueryServlet").forward(req, resp);
 		}
-		else resp.sendRedirect("login.jsp");
 		
-//		if(user.getUsername().equals(username) && user.getPassword().equals(password))
-//		{
-//			req.getRequestDispatcher("QueryServlet").forward(req, resp);
-//		}
-//		else
-//		{
-//			resp.sendRedirect("login.jsp");
-//		}
+		else
+		{
+			resp.sendRedirect("login.jsp");
+		}
 		
+		HttpSession session = req.getSession();
+		session.setAttribute("username", username);
 	}
 	
 	@Override

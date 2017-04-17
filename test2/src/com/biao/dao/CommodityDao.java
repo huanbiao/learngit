@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.biao.bean.Commodity;
-import com.biao.bean.User;
 import com.biao.dbutil.DBConnection;
 
 public class CommodityDao
@@ -130,4 +129,29 @@ public class CommodityDao
 		}
 	}
 	
+	//增加数据
+	public boolean add(Commodity c)
+	{
+		
+		con = DBConnection.getConnection();
+		String sql = "insert into commodity (id, name, price, unit) values(?, ?, ?, ?)";
+		
+		try
+		{
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, c.getId());
+			pstm.setString(2, c.getName());
+			pstm.setInt(3, c.getPrice());
+			pstm.setString(4, c.getUnit());
+			int count = pstm.executeUpdate();
+			
+			return count > 0 ? true : false;//是否添加的判断
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }
